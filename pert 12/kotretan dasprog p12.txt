@@ -1,0 +1,133 @@
+sorting --> mengurutkan : increase, decrease order
+
+selection sort
+bubble sort
+
+indeks  0   1    2    3    4
+data    70  54  65   11   23      ---> 11  23  54  65 70
+--------------------------------
+SELECTION SORT
+indeks  0   1    2    3    4
+data    70  54  65   11   23      
+--------------------------------
+1       11 |54  65   70   23
+2       11  23 |65   70   54
+3       11  23  54|  70   65
+4       11  23  54   65|  70
+
+
+45 56 78 23 12 34 33 11
+11 56 78 23 12 34 33 45 <--- meletakan min 1st rank di depan
+11 12 78 23 56 34 33 45
+11 12 23 78 56 34 33 45 
+11 12 23 33 56 34 78 45 
+11 12 23 33 34 56 78 45 
+11 12 23 33 34 45 78 56
+11 12 23 33 34 45 56 78
+
+BUBBLE SORT
+   0  1  2  3  4
+  23 45 21 56 11   cek 23 vs 45 sudah ok - jangan diubah
+  23 45 21 56 11   cek 45 vs 21 ini gabener hrs ditukar
+  23 21 45 56 11   45  vs 56 tetep  
+  23 21 45 11|56   56 vs 11 tuker
+
+  21 23 11|45 56
+  21 11|23 45 56
+  11|21 23 45 56
+-------------------
+BS
+0 45 56 78 23 12 34 33 11
+1 45 56 23 12 34 33 11 78
+2 45 23 12 34 33 11 56|78
+3 23 12 34 33 11 45|56 78
+4 12 23 33 11 34|45 56 78
+... 3 langkah lagi
+
+SEARCHING 
+   0  1  2  3  4
+  23 45 21 56 11 
+dimanakah posisi indeks dari data bernilai 56? 3
+dimanakah posisi indeks dari data bernilai 7? N/A
+
+- sekuensial searching
+- binary searching
+
+   0  1  2  3  4
+  23 45 21 56 11 
+
+mencari x
+indx = 0---> cek data[indx] == x selama belum ketemu dan
+masih ada data yang belum ditelusuri
+
+   0  1  2  3  4
+  23 45 21 56 11 
+
+x = 56 posisinya?
+data[0]=23 != x bukan
+data[1]=45 != x bukan
+data[2]=21 != x bukan
+data[3]=56 == x maka 3 lah posisinya
+
+BINARY SEARCH
+- baru dapat berjalan hanya pada data yang sudah terurut 
+   0  1  2  3  4
+  23 45 21 56 11 
+-----------------------
+   q     t     k
+   0  1  2  3  4
+  11 21 23 45 56
+
+x=21--19
+putaran 1
+t =(q+k)/2 =(0+4)/2 = 2
+data[t]= 23 bukan x-------> pencarian dilanjutkan
+fokuskan pencarian ke kiri, karena x lebih kecil dari si tengah
+k digeser---> (t-1)
+   
+   t 
+   q  k
+   0  1  2  3  4
+  11 21 23 45 56
+
+t=(0+1)/2 = 0
+data[t]=11 bukan x=21
+karena x> data tengah lanjutkan pencarian ke kanan
+q letakan di (t+1)
+
+      q
+      k
+   0  1  2  3  4
+  11 21 23 45 56
+t=1
+data[t]=21 == x berarti ketemu
+posisi di indeks 1
+
+---------------------------------
+        
+indeks  0   1   2  3  4   5   6   7   8   9
+data    7   9  11  15 20 23  25  27  32  45
+---------------------------------------
+putaran pertama
+x=25
+q=0, k=9, t=4
+data[t] = 20 != x terus gimana? x>data tengah
+q=t+1
+--------------------------
+putaran kedua
+x=25
+q=5, k=9, t=7
+data[t] = 27 != x terus gimana? x<data tengah
+k=t-1=6
+------------------------
+putaran ketiga
+x=25
+q=5, k=6, t=5
+data[t] = 23 != x terus gimana? x>data tengah
+q=t+1=6
+------------------
+putaran ketiga
+x=25
+q=6, k=6, t=6
+data[t] = 25 == x ketemu di 6
+------------------
